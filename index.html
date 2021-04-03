@@ -11,30 +11,92 @@
 
 <body>
     <h1>
-        Etch a Sketch Project
+        Etch a Sketch
     </h1>
     <div class="container">
+
+        <!-- Optiones -->
         <div class="options">
-            <div>
-                <label>
-                    Grid Size
-                </label>
-                <input type="number" name="grid-size" value="2" min="2" max="40" step="1" style="width: 100px;"
-                    id="grid-size">
+            <div class="grid-size">
+                <div>
+                    <small>Grid size should be between <strong>2</strong> and <strong>50</strong>.</small>
+                </div>
+                <div class="grid-size-text">
+                    <label>
+                        Grid Size
+                    </label>
+                </div>
+                <div class="grid-size-number">
+                    <div class="tooltip">
+                        <span class="tooltiptext" id="tooltiptext">6</span>
+                        <input type="range" name="grid-size" min="2" max="50" value="6" class="slider" id="grid-size"
+                            onchange="rangeValFunc(this.value);">
+                    </div>
+                </div>
+                <!-- <div class="grid-size-number">
+                    <input type="range" name="grid-size" value="6" min="2" max="50" step="1" style="width: 150px;"
+                        id="grid-size">
+                </div> -->
             </div>
-            <div><label"> Pick your Color: 
-                    <label for="gray">Gray </label><input type="radio" checked name="colorPicker" id="gray">
-                     <label for="green">Green </label><input type="radio" name="colorPicker" id="green">
-                    <label for="rainbow">Rainbow</label><input type="radio" name="colorPicker" id="rainbow"></label>
+            <div class="colors">
+                <label class="pick-your-color"> Pick your Color</label>
+                <div>
+                    <label class="label-of-colors" id="grayLabel" for="gray">Gray </label><input type="radio" checked
+                        name="colorPicker" id="gray">
+                </div>
+                <div>
+                    <label class="label-of-colors" for="indigo">Indigo </label><input type="radio" name="colorPicker"
+                        id="indigo">
+                </div>
+                <div>
+                    <label class="label-of-colors" for="rainbow">Rainbow </label><input type="radio" name="colorPicker"
+                        id="rainbow"></label>
+                </div>
+                <div>
+                    <label class="label-of-colors" for="pickYourColor">Pick your color </label>
+                    <input type="radio" name="colorPicker" id="pickYourColor">
+                    <input type="color" name="yourColor" id="yourColor"></label>
+                </div>
+                <div>
+                    <label class="label-of-colors" for="grayScale">Gray Scale </label>
+                    <input type="radio" name="colorPicker" id="grayScale">
+                    <!-- <input type="color" name="yourColor" id="yourColor"></label> -->
+                </div>
+                <div>
+                    <label class="label-of-colors" for="eraser">Eraser </label><input type="radio" name="colorPicker"
+                        id="eraser"></label>
+                </div>
+                <div><button type="button" id="reset">Reset</button></div>
             </div>
-
-            </datalist>
         </div>
-        <div class="grid-container">
+        <!-- Grid Container -->
+        <div class="grid">
+            <div class="grid-container">
 
+            </div>
         </div>
+        <!-- end of Grid Container -->
     </div>
     <script src="./js/app.js"></script>
+    <script>
+        // range of numbers
+        function rangeValFunc(rangeVal) {
+            var rangeWidth = document.getElementById("tooltiptext").textContent = rangeVal;
+            if (rangeVal >= 6) {
+                rangeVal = 2.92999 * (rangeVal - 6);
+                document.getElementById("tooltiptext").style.left = `${rangeVal}px`;
+            } else {
+                rangeVal = 2.92999 * (6-rangeVal);
+                document.getElementById("tooltiptext").style.left = `-${rangeVal}px`;
+            }
+
+        }
+    </script>
+    <footer>
+        <small style="color: rgb(68, 67, 67);">
+            design by <a href="#">mghezel</a>
+        </small>
+    </footer>
 </body>
 
 </html>
